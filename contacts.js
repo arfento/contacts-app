@@ -51,7 +51,7 @@ const simpanContact = (nama, noHP, alamat) => {
         return false;
     }
 
-    // cek email / data kurang 
+    // cek email valid tidaknya 
     /* if(email){
         if (!validator.isEmail(email)){
             console.log(chalk.red.inverse.bold("Email tidak valid!"));
