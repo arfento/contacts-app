@@ -79,6 +79,48 @@ yargs.command({
         contacts.simpanContact(argv.nama, argv.noHP, argv.alamat);
     }
 
+}).demandCommand();
+
+
+//menampilkan daftar semua nama contact ||List
+
+yargs.command({
+    command : 'list',
+    describe : 'Menampilkan semua data',
+    handler(){
+        contacts.listContact();
+    }
 });
+
+yargs.command({
+    command : 'detail',
+    describe : 'Menampilkan detail sebuah contact berdasarkan nama',
+    builder : {
+        nama : {
+            describe : 'Nama Lengkap',
+            demandOption : true,
+            type: 'string',
+        },
+    },
+    handler(argv){
+        contacts.detailContact(argv.nama);
+    }
+});
+//menghapus contact berdasarkan nama
+yargs.command({
+    command : 'delete',
+    describe : 'Delete sebuah contact berdasarkan nama',
+    builder : {
+        nama : {
+            describe : 'Nama Lengkap',
+            demandOption : true,
+            type: 'string',
+        },
+    },
+    handler(argv){
+        contacts.deleteContact(argv.nama);
+    }
+});
+
 
 yargs.parse();
